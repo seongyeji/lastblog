@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% comment %} 우선순위 짱 높음 {% endcomment %}
+
+{% block contents %}
+<body>
+    <div class='container'>
+        <div class="card mt-5">
+            <div class="card-body">
+                <h5 class="card-title">{{details.title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{details.pub_date}}</h6>
+                <p class="card-text">{{details.body}}</p>
+                <a href="{% url 'update' pk=details.pk %}">수정</a>
+                <a href="{% url 'delete' pk=details.pk %}" class="delete" >삭제</a>
+                <br>
+                <hr>
+                <h6>댓글목록</h6>
+                <a href="{% url 'add_comment' pk=details.pk %}" class="btn btn-primary">Add comment</a>
+                {% for comment in details.comments.all %}
+                    <div class='comment'>
+                        <hr>
+                        <div class='date'>{{ comment.created_date }}</div>
+                        <h6>{{ comment.author }}</h6>
+                        <p>{{ comment.text|linebreaks }}</p>
+                        <a href="{% url 'edit_comment' comment.id %}">수정</a>
+                        <a href="{% url 'del_comment' comment.id %}" class="delete">삭제</a>
+                        {% empty %}
+                        <hr>
+                        <p> No comments here yet :(</p>
+                        {% endfor %}
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+       
+
+</body>
+{% endblock  %}

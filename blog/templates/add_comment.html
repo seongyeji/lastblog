@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% comment %} 우선순위 짱 높음 {% endcomment %}
+
+{% block contents %}
+<body>
+    <section class="ls section_padding_top_75 section_padding_bottom_75">
+        <div class='container'>
+            <div class="card mt-5 text-center">
+                <div class="card-body new">
+                    <h1>New comment</h1>
+                    <form method = "POST">{% csrf_token %}
+                        <table>
+                        {{form.as_table}}
+                        </table>
+                        <input class="btn btn-primary submit" type="submit" value="제출">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock  %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% comment %} 우선순위 짱 높음 {% endcomment %}
+
+{% block contents %}
+<body>
+    <section class="ls section_padding_top_75 section_padding_bottom_75">
+        <div class='container'>
+            <div class="card mt-5 text-center">
+                <div class="card-body">
+                    <h1>LOGIN</h1>
+                    <form method = "POST" action="{% url 'login' %}">{% csrf_token %}
+                        <h6 class="card-text">
+                        Username:<br>
+                        <input name="username" type= "text" value=""></h6>
+                        <h6 class="card-text mb-2">
+                        Password:<br>
+                        <input name="password1" type="password" value="">
+                        </h6>
+                        <input class="btn btn-primary .submit-login" type="submit" value="LOGIN">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock  %}
